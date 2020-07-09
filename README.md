@@ -1,49 +1,96 @@
-# Mortgage-Calculator-Kim
-# Falisia
+## Server API
 
-> Falisa is a real estate search web application that allows buyers and renters to find homes across the United States through local insights and neighborhood reviews and utilizes Google maps API to offer details on commute and reported crimes.
+### Get restaurant info
+  * GET `/api/restaurants/:id`
 
-## Related Projects
+**Path Parameters:**
+  * `id` restaurant id
 
-  - https://github.com/hrsf128-9-hypebeast-bobas/Tour-Scheduling-Sam
-  - https://github.com/hrsf128-9-hypebeast-bobas/Similar_Homes_JKwan
-  - https://github.com/hrsf128-9-hypebeast-bobas/Maps-MHamu
+**Success Status Code:** `200`
 
-## Table of Contents
+**Returns:** JSON
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-
-## Usage
-
-> Webpack compile: 'npm run react-dev'
-```sh
-webpack -d --watch
-```
-> Start Server: 'npm run start'
-```sh
-nodemon server/index.js
-```
-> Seed DB: 'npm run db:setup'
-```sh
-node database/seed.js
+```json
+    {
+      "id": "Number",
+      "name": "String",
+      "address": "String",
+      "phone": "String",
+      "website": "String",
+      "cost": "Number"
+    }
 ```
 
-## Requirements
+### Add restaurant
+  * POST `/api/restaurants`
 
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
+**Success Status Code:** `201`
 
-- Node 6.13.0
-- etc
+**Request Body**: Expects JSON with the following keys.
 
-## Development
-
-### Installing Dependencies
-
-From within the root directory:
-
-```sh
-npm install -g webpack
-npm install
+```json
+    {
+      "name": "String",
+      "address": "String",
+      "phone": "String",
+      "website": "String",
+      "googleMap": "String location",
+      "cost": "Number"
+    }
 ```
+
+
+### Update restaurant info
+  * PATCH `/api/restaurant/:id`
+
+**Path Parameters:**
+  * `id` restaurant id
+
+**Success Status Code:** `204`
+
+**Request Body**: Expects JSON with any of the following keys (include only keys to be updated)
+
+```json
+    {
+      "name": "String",
+      "address": "String",
+      "phone": "String",
+      "website": "String",
+      "cost": "Number"
+    }
+```
+
+### Delete restaurant
+  * DELETE `/api/restaurant/:id`
+
+**Path Parameters:**
+  * `id` restaurant id
+
+**Success Status Code:** `204`
+
+### Add image to restaurant
+  * POST `/api/restaurants/:restaurantId/images`
+
+**Path Parameters:**
+
+  * `restaurantId` restaurant id
+
+**Success Status Code:** `201`
+
+**Request Body**: Expects JSON with the following keys.
+
+```json
+    {
+      "user": "String",
+      "image": "image URL",
+      "description": "String",
+      "posted": "YYYY-MM-MM",
+      "googleMap": "String location",
+      "category": "String",
+      "restaurant": "id Number",
+      "cost": "Number"
+    }
+```
+×
+Drag and Drop
+The image will be downloaded
