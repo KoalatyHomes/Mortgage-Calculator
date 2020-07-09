@@ -21,12 +21,12 @@ function App(props) {
 
   function fetchData() {
     useEffect(() => {
-      axios.get('/api/home1')
+      axios.get('/api/homes/2')
         .then((results) => results.data)
         .then((data) => {
           console.log('GET success');
           console.log('data', data);
-          sethomePriceVal(data[0].mortgagePrice);
+          sethomePriceVal(data[0].homePrice);
           setPaymentRate(data[0].downPaymentRate);
           setInterestRate(data[0].interestRate);
           setpropertyTaxRate(data[0].propertyTaxRate);

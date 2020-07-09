@@ -1,10 +1,10 @@
 ## Server API
 
-### Get restaurant info
-  * GET `/api/restaurants/:id`
+### Mortgage Information
+  * GET `/api/homes/:id`
 
 **Path Parameters:**
-  * `id` restaurant id
+  * `id` listing id
 
 **Success Status Code:** `200`
 
@@ -12,17 +12,18 @@
 
 ```json
     {
-      "id": "Number",
-      "name": "String",
-      "address": "String",
-      "phone": "String",
-      "website": "String",
-      "cost": "Number"
+        "homeNum": "Number",
+        "city": "String",
+        "homePrice": "Number",
+        "downPaymentRate": "Number",
+        "homeIns": "Number",
+        "interestRate": "Number",
+        "propertyTaxRate": "Number",
     }
 ```
 
 ### Add restaurant
-  * POST `/api/restaurants`
+  * POST `/api/homes`
 
 **Success Status Code:** `201`
 
@@ -30,21 +31,22 @@
 
 ```json
     {
-      "name": "String",
-      "address": "String",
-      "phone": "String",
-      "website": "String",
-      "googleMap": "String location",
-      "cost": "Number"
+        "homeNum": "Number",
+        "city": "String",
+        "homePrice": "Number",
+        "downPaymentRate": "Number",
+        "homeIns": "Number",
+        "interestRate": "Number",
+        "propertyTaxRate": "Number",
     }
 ```
 
 
 ### Update restaurant info
-  * PATCH `/api/restaurant/:id`
+  * PATCH `/api/homes/:id`
 
 **Path Parameters:**
-  * `id` restaurant id
+  * `id` listing id
 
 **Success Status Code:** `204`
 
@@ -52,45 +54,16 @@
 
 ```json
     {
-      "name": "String",
-      "address": "String",
-      "phone": "String",
-      "website": "String",
-      "cost": "Number"
+        "homePrice": "Number",
+        "downPaymentRate": "Number",
+        "interestRate": "Number",
     }
 ```
 
 ### Delete restaurant
-  * DELETE `/api/restaurant/:id`
+  * DELETE `/api/homes/:id`
 
 **Path Parameters:**
-  * `id` restaurant id
+  * `id` home id
 
 **Success Status Code:** `204`
-
-### Add image to restaurant
-  * POST `/api/restaurants/:restaurantId/images`
-
-**Path Parameters:**
-
-  * `restaurantId` restaurant id
-
-**Success Status Code:** `201`
-
-**Request Body**: Expects JSON with the following keys.
-
-```json
-    {
-      "user": "String",
-      "image": "image URL",
-      "description": "String",
-      "posted": "YYYY-MM-MM",
-      "googleMap": "String location",
-      "category": "String",
-      "restaurant": "id Number",
-      "cost": "Number"
-    }
-```
-×
-Drag and Drop
-The image will be downloaded
