@@ -22,7 +22,7 @@
     }
 ```
 
-### Add restaurant
+### Add home
   * POST `/api/homes`
 
 **Success Status Code:** `201`
@@ -42,7 +42,7 @@
 ```
 
 
-### Update restaurant info
+### Update home info
   * PATCH `/api/homes/:id`
 
 **Path Parameters:**
@@ -60,7 +60,7 @@
     }
 ```
 
-### Delete restaurant
+### Delete home
   * DELETE `/api/homes/:id`
 
 **Path Parameters:**

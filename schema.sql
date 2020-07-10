@@ -1,0 +1,15 @@
+CREATE DATABASE mortgage;
+
+CREATE TABLE listings (
+  id SERIAL PRIMARY KEY,
+  homePrice INTEGER NOT NULL,
+  region INTEGER NOT NULL
+)
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  region INTEGER NOT NULL,
+  creditScore INTEGER NOT NULL,
+  downPaymentRate FLOAT NOT NULL,
+
+)
