@@ -8,4 +8,5 @@ build/
 dist/
 
 # CSV files
-database/csvData/data/*.csv
+database/data/postgres/csv
+database/data/cassandra/csv

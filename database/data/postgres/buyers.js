@@ -26,6 +26,10 @@ const getRandomIntInclusive = (min, max) => {
 }
 
 // genBuyers(1, 10000000, 1);
-genBuyers(10000001, 20000000, 2);
-genBuyers(20000001, 30000000, 3);
-genBuyers(30000001, 40000000, 4);
+// genBuyers(10000001, 20000000, 2);
+// genBuyers(20000001, 30000000, 3);
+// genBuyers(30000001, 40000000, 4);
+// genBuyers(40000001, 50000000, 5);
+// genBuyers(50000001, 60000000, 6);
+// genBuyers(60000001, 70000000, 7);
+// genBuyers(70000001, 80000000, 8);

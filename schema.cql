@@ -1,4 +1,8 @@
-CREATE KEYSPACE IF NOT EXISTS listing WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
+CREATE KEYSPACE IF NOT EXISTS listings WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
+
+USE listings;
+
+DROP TABLE IF EXISTS mortgages_by_property;
 
 CREATE TABLE mortgages_by_property (
   propertyId int,
@@ -11,9 +15,11 @@ CREATE TABLE mortgages_by_property (
   propertyTaxRate float,
   principleRate float,
   homeInsuranceRate int,
-  loanType text
+  loanType text,
   PRIMARY KEY (propertyId, propertyTaxRate)
-)
+);
+
+DROP TABLE IF EXISTS mortgages_by_buyers;
 
 CREATE TABLE mortgages_by_buyers (
   buyerId int,
@@ -23,4 +29,4 @@ CREATE TABLE mortgages_by_buyers (
   mortgage int,
   interestRate float,
   PRIMARY KEY (buyerId, loanType)
-)
+);
