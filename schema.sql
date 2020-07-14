@@ -1,7 +1,7 @@
 CREATE TABLE listings (
   listing_id SERIAL PRIMARY KEY,
   home_price INTEGER NOT NULL,
-  region_id SMALLINT NOT NULL UNIQUE
+  region_id SMALLINT NOT NULL
 );
 
 
@@ -22,7 +22,7 @@ CREATE TABLE property_tax (
 
 CREATE TABLE buyers (
   buyer_id SERIAL PRIMARY KEY,
-  region_id SMALLINT NOT NULL REFERENCES listings(region_id),
+  listing_id SMALLINT NOT NULL REFERENCES listings(listing_id),
   down_payment_rate FLOAT NOT NULL,
   loan_type_id SMALLINT NOT NULL REFERENCES loan(loan_id),
   interest_rate_id SMALLINT NOT NULL REFERENCES interest_rate(interest_id),

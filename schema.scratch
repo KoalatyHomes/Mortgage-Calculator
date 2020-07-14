@@ -1,52 +1,5 @@
 CREATE KEYSPACE IF NOT EXISTS listing WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
 
-CREATE TYPE listing.homes (
-  homePrice int,
-  regionId smallint
-);
-
-CREATE TABLE listing.homes_by_region (
-  region_id smallint,
-  home_id smallint,
-  PRIMARY KEY ((region_id), home_id)
-)
-
-CREATE TABLE listing.homes_by_price (
-  homePrice int,
-  home_id smallint
-  PRIMARY KEY (home_id)
-)
-
-CREATE KEYSPACE IF NOT EXISTS buyer WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
-
-CREATE TYPE buyer.location (
-  regionId smallint
-)
-
-CREATE TABLE buyer.buyers_by_region (
-  regionId smallint
-)
-
-CREATE TABLE buyer.down_payment_rates (
-  downnPaymentRate float
-)
-
-CREATE TABLE buyer.loan_types (
-  loanType text,
-)
-
-CREATE TABLE buyer.interest_rates (
-  interestRate float
-)
-
-CREATE TABLE buyer.property_tax (
-  propertyTax int
-)
-
-
-###########################################
-CREATE KEYSPACE IF NOT EXISTS listing WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
-
 CREATE TABLE mortgages_by_property (
   propertyId int,
   street text,
