@@ -1,9 +1,9 @@
 const fs = require('fs');
 const faker = require('faker');
 const csvWriter = require('csv-write-stream');
-let writer = csvWriter();
 
 const genInterestRate = () => {
+  let writer = csvWriter();
   writer.pipe(fs.createWriteStream(`./data/interestRate.csv`));
   for (let id = 1; id <= 4; id++) {
     if (id === 1) {

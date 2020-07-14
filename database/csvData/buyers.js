@@ -25,7 +25,7 @@ const getRandomIntInclusive = (min, max) => {
   return Math.floor(Math.random() * (max-min + 1)) + min;
 }
 
-genBuyers(1, 5000000, 1);
-genBuyers(5000001, 10000000, 2);
-genBuyers(10000001, 15000000, 3);
-genBuyers(15000001, 20000000, 4);
+// genBuyers(1, 10000000, 1);
+genBuyers(10000001, 20000000, 2);
+genBuyers(20000001, 30000000, 3);
+genBuyers(30000001, 40000000, 4);

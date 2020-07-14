@@ -14,7 +14,7 @@ const genListings = (start, end, filenum) => {
   }
 }
 
-// genListings(1, 5000000, 1);
-genListings(5000001, 10000000, 2);
-genListings(10000001, 15000000, 3);
-genListings(15000001, 20000000, 4);
+genListings(1, 10000000, 1);
+genListings(10000001, 20000000, 2);
+genListings(20000001, 30000000, 3);
+genListings(30000001, 40000000, 4);
