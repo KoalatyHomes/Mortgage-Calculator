@@ -5,28 +5,27 @@ USE listings;
 DROP TABLE IF EXISTS mortgages_by_property;
 
 CREATE TABLE mortgages_by_property (
-  propertyId int,
+  property_id int,
   street text,
   city text,
   mortgage int,
-  homePrice int,
-  downPaymentRate float,
-  interestRate float,
-  propertyTaxRate float,
-  principleRate float,
-  homeInsuranceRate int,
-  loanType text,
-  PRIMARY KEY (propertyId, propertyTaxRate)
+  home_price int,
+  down_payment_rate float,
+  interest_rate float,
+  property_tax_rate float,
+  home_insurance int,
+  loan_type text,
+  PRIMARY KEY (property_id, property_tax_rate)
 );
 
 DROP TABLE IF EXISTS mortgages_by_buyers;
 
 CREATE TABLE mortgages_by_buyers (
-  buyerId int,
+  buyer_id int,
   name text,
-  creditScore int,
-  loanType text,
+  credit_score int,
+  loan_type text,
   mortgage int,
-  interestRate float,
-  PRIMARY KEY (buyerId, loanType)
+  interest_rate float,
+  PRIMARY KEY (buyer_id, loan_type)
 );

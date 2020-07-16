@@ -4,7 +4,7 @@ const csvWriter = require('csv-write-stream');
 
 const genLoanType = () => {
   let writer = csvWriter();
-  writer.pipe(fs.createWriteStream(`./data/loanType.csv`));
+  writer.pipe(fs.createWriteStream(`./csv/loanType.csv`));
   for (let id = 1; id <= 4; id++) {
     if (id === 1) {
       writer.write({
