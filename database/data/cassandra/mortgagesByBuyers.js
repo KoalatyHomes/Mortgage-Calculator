@@ -10,16 +10,21 @@ const genBuyers = (start, end, filenum) => {
   let interestRates = [2.83, 2.74, 3.10, 3.23];
 
   for (let id = start; id <= end; id++) {
-    writer.write({
+    let buyerObject = {
       buyer_id: id,
       name: faker.name.firstName() + ' ' + faker.name.lastName(),
       credit_score: faker.random.number({min: 300, max: 850}),
-      loan_type: loanTypes[getRandomIntInclusive(0, 3)],
       mortgage: faker.random.number({min: 2000, max: 10000}),
       interest_rate: interestRates[getRandomIntInclusive(0, 3)]
-    })
+    }
+
+      for (let i = 0; i <= 3; i++) {
+        buyerObject['loan_type'] = loanTypes[i];
+        writer.write(buyerObject);
+      }
   }
 }
+
 
 const getRandomIntInclusive = (min, max) => {
   min = Math.ceil(min);
@@ -27,8 +32,7 @@ const getRandomIntInclusive = (min, max) => {
   return Math.floor(Math.random() * (max-min + 1)) + min;
 }
 
-genBuyers(1, 10000000, 1);
-genBuyers(10000001, 20000000, 2);
-genBuyers(20000001, 30000000, 3);
-// genBuyers(30000001, 40000000, 4);
-// genBuyers(40000001, 50000000, 5);
+genBuyers(1, 2500000, 1);
+genBuyers(2500001, 5000000, 2);
+genBuyers(5000001, 7500000, 3);
+genBuyers(7500001, 10000000, 4);

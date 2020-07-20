@@ -21,7 +21,7 @@ function App(props) {
 
   function fetchData() {
     useEffect(() => {
-      axios.get('/api/homes/2')
+      axios.get('/api/homes/:id')
         .then((results) => results.data)
         .then((data) => {
           console.log('GET success');

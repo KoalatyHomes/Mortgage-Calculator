@@ -34,10 +34,6 @@ module.exports = {
               modules: true,
             },
           },
-          // ExtractTextPlugin.extract({
-          //   fallback: 'style-loader',
-          //   use: 'css-loader'
-          // })
         ],
       },
     ]

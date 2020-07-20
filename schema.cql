@@ -15,7 +15,7 @@ CREATE TABLE mortgages_by_property (
   property_tax_rate float,
   home_insurance int,
   loan_type text,
-  PRIMARY KEY (property_id, property_tax_rate)
+  PRIMARY KEY (property_id, mortgage)
 );
 
 DROP TABLE IF EXISTS mortgages_by_buyers;

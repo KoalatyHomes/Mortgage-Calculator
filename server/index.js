@@ -1,12 +1,11 @@
-/* eslint-disable no-console */
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
+const db = require('../database/index.js')
 const app = express();
 
-const port = 3333;
-const Mortgage = require('../database/Mortgage.js'); // the model
+const port = 3000;
 
 // Fix cross origin
 app.use((req, res, next) => {
@@ -19,55 +18,51 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('./public'));
 
 app.get('/api/homes/:id', (req, res) => {
-  Mortgage.find({"homeNum" : req.params.id}, (err, results) => {
+  const { id } = req.params;
+  const { homeZip } = req.body;
+  let queryStr = `SELECT home_price FROM listings WHERE listing_id=${id}`;
+  db.query(queryStr, (err, results) => {
     if (err) {
-      res.status(400).send('Error fetching data');
+      console.log(err.stack);
     } else {
-      res.status(200).send(results);
+      res.status(200).send(results.rows);
     }
   });
-});
+})
 
 app.post('/api/homes', (req, res) => {
-  Mortgage.create(
-    {
-      homeNum: req.body.homeNum,
-      city: req.body.city,
-      homePrice: req.body.mortgagePrice,
-      downPaymentRate: req.body.downPaymentRate,
-      homeIns: req.body.homeIns,
-      interestRate: req.body.interestRate,
-      propertyTaxRate: req.body.propertyTaxRate,
-    }, (err, results) => {
-      if (err) {
-        res.status(400).send(err);
-      } else {
-        res.status(201).send(results);
-      }
-    })
+  var currentRowCount = 0;
+  db.query(`SELECT MAX(listing_id) from listings`, (err, result) => {
+    if (err) {
+      console.log(err.stack);
+    } else {
+      nextRowCount = result.rows[0].max + 1;
+      const { homePrice, homeAddress, homeZip } = req.body;
+      let queryStr = `INSERT INTO listings(listing_id, home_price, home_address, home_zip) VALUES (${nextRowCount}, ${homePrice}, '${homeAddress}', '${homeZip}')`;
+      db.query(queryStr, (err, results) => {
+        if (err) {
+          console.log(err.stack);
+        } else {
+          res.status(201).send(results.rows);
+        }
+      })
+    }
+  });
 })
 
 app.patch('/api/homes/:id', (req, res) => {
-  Mortgage.updateOne(
-    {"homeNum": req.params.id},
-      { $set: {"homePrice": req.body.homePrice, "downPaymentRate": req.body.downPaymentRate, "interestRate": req.body.interestRate}}, (err, results) => {
-      if (err) {
-        res.status(400).send(err);
-      } else {
-        res.status(204).send(results);
-      }
+  const { id } = req.params;
+  const { newPrice } = req.body;
+  let queryStr = `UPDATE listings SET home_price=${newPrice} WHERE listing_id=${id}`;
+  db.query(queryStr, (err, results) =>  {
+    if (err) {
+      console.log(err.stack);
+    } else {
+      res.status(201).send(results.rows);
     }
-  )
+  });
 })
 
-app.delete('/api/homes/:id', (req, res) => {
-  Mortgage.deleteOne({"homeNum":req.params.id}, (err, results) => {
-    if (err) {
-      res.status(400).send(err);
-    } else {
-      res.status(204).send(results);
-    }
-  })
-})
 
 app.listen(port, () => console.log(`\nlistening at http://localhost:${port}`));
+
