@@ -10,3 +10,5 @@ dist/
 # CSV files
 database/data/postgres/csv
 database/data/cassandra/csv
+
+./newrelic.js
