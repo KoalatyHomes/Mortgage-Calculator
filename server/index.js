@@ -1,4 +1,4 @@
-require('newrelic')
+// require('newrelic')
 const path = require('path');
 const cluster = require('cluster');
 var numCPUs = require('os').cpus().length;
@@ -13,7 +13,7 @@ if (cluster.isMaster) {
       cluster.fork();
   }
 } else {
-  const port = 3000;
+  const port = 3333;
   const app = express();
 
   // Fix cross origin
