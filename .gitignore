@@ -11,4 +11,8 @@ dist/
 database/data/postgres/csv
 database/data/cassandra/csv
 
+# newrelic keys
 ./newrelic.js
+
+# logfiles
+*.log
