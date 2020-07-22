@@ -1,4 +1,4 @@
-// require('newrelic')
+require('newrelic')
 const path = require('path');
 const cluster = require('cluster');
 var numCPUs = require('os').cpus().length;
@@ -73,5 +73,5 @@ if (cluster.isMaster) {
   })
 
 
-  app.listen(port, () => console.log(`\nlistening at http://localhost:${port}`));
+  app.listen(port, () => console.log(`\nlistening at 54.241.113.24:${port}`));
 }
